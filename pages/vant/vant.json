@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "post-card": "../../components/postcard",
+    "my-card":"../../components/indpg"
+  }
+}

@@ -1,0 +1,70 @@
+/* pages/play/play.wxss */
+
+.scroll-view_H {
+  white-space: nowrap;
+}
+
+.scroll-view_H .card {
+  display: inline-block;
+  width: 40%;
+  margin-right: 15px;
+}
+
+.scroll-view_H .card:first-of-type {
+  margin-left: 15px;
+}
+
+.scroll-view_H .card image {
+  width: 100%;
+}
+
+.top-title {
+  text-align: center;
+  font-weight: 800;
+  margin-top: 50px;
+  font-size: 1.2em;
+}
+
+.info {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.5em;
+  color: #999;
+}
+
+.content {
+  margin-top: 50px;
+  color: #3f3f3f;
+  padding: 20px;
+}
+
+.h3 {
+  padding: 10px;
+  font-weight: 800;
+}
+
+.card {
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  bottom: 0px;
+  padding: 10px;
+  font-size: 0.6em;
+  color: #fff;
+}
+
+#myVideo{
+  position: fixed;
+  top: 0px;
+}
+
+.zhanw{
+  height: 225px;
+}

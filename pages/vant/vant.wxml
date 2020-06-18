@@ -1,0 +1,73 @@
+<!--pages/vant/vant.wxml-->
+
+<!-- 展示卡 -->
+<van-popup show="{{ zhans }}" close-icon-position="top-left" custom-style="height: 100%;width:100%;background:url({{zhansCar.image_blurred}}) center;">
+  <view class="waihuan">
+    <van-icon name="cross" color="#fff" size="20px" bind:click="showPopup" />
+    <view class="zhans">
+      <image src="{{zhansCar.image}}"></image>
+
+      <view class="time">
+        <view class="day">{{zhansCar.time.day}}</view>
+        <view class="year">
+          <view class="month">{{zhansCar.time.month}}.</view>
+          <view class="week">{{zhansCar.time.week}}</view>
+        </view>
+      </view>
+
+      <view class="title">{{zhansCar.title}}</view>
+      <view class="content">{{zhansCar.content}}</view>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 搜索页 -->
+<van-popup show="{{search}}" custom-style="width:100%;height:100%" >
+  <view class="search">
+    <van-search value="{{keyWork}}" placeholder="请输入搜索关键词" show-action background="#191919" bind:search="onSearch" bind:cancel="hideSearch" bind:change="onChange" />
+    <!-- 热词 -->
+    <view class="hot-title" >热门搜索</view>
+    <view class="hot-kw">
+      <view class="hot" wx:for="{{searchHot}}" data-time="{{time}}" bind:click="hotKwsearch">{{item.kw}}</view> 
+    </view>
+    <!-- 卡片 -->
+    <post-card wx:for="{{searchData.result.list}}" post="{{item}}"></post-card>
+  </view>
+</van-popup>
+
+<!-- 选项卡 -->
+<van-nav-bar  >
+  <van-icon name="search" color="#fff" size="1.8em" slot="right" bind:click="hideSearch" />
+  <van-icon name="calender-o" color="#fff" dot size="1.8em" slot="left" is-link bind:click="showPopup" />
+  <van-tabs slot="title" active="{{ active }}" color="#fff" animated="{{true}}" bind:change="onChange">
+    <van-tab title="发现">
+      <swiper indicator-dots indicator-active-color='rgba(255, 255, 255)' indicator-color='rgba(255, 255, 255,.3)' autoplay circular>
+        <block wx:for="{{banner.list}}" wx:key="*this">
+          <swiper-item data-post="{{item}}" bindtap="navigateToPlay">
+            <image width="100%" fit="widthFix" src="{{item.image}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <my-card wx:for="{{indexData}}" post="{{item}}">
+        <view class="slot">{{item.selection_title}}</view>
+      </my-card>
+
+      <my-card wx:for="{{dateData}}" post="{{item}}">
+        <view class="slot">{{item.selection_title}}</view>
+      </my-card>
+
+      <van-loading size="24px" wx:show="{{dishow}}">加载中...</van-loading>
+    </van-tab>
+    <van-tab title="分类">
+      <van-grid column-num="2" border="{{ false }}" square>
+        <van-grid-item use-slot wx:for="{{cateList}}" data-cateid="{{item.cateid}}" bindtap="routeToPostsList">
+          <image style="width:100%" fit="cover" src="{{item.icon}}" />
+          <view>
+            <text>#{{item.catename}}#</text>
+          </view>
+        </van-grid-item>
+      </van-grid>
+    </van-tab>
+  </van-tabs>
+</van-nav-bar>

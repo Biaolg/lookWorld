@@ -1,0 +1,5 @@
+<!--components/indpg/index.wxml-->
+<view class="indpg">
+<slot></slot>
+<post-card wx:for="{{post.list}}" post="{{item}}"></post-card>
+</view>
